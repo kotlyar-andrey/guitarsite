@@ -1,0 +1,21 @@
+body {
+  background-color: #ffffff;
+  background-image: url(../assets/images/bg.jpg);
+  background-size: 100%;
+}
+
+@font-face {
+  font-family: Debby;
+  src: url("../assets/fonts/Debby.ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: SpriteGraffiti;
+  src: url("../assets/fonts/SpriteGraffiti.ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

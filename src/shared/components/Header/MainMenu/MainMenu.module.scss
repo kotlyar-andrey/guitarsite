@@ -1,0 +1,45 @@
+.navigation {
+  & a {
+    color: #69306d;
+    font-size: 28px;
+    padding: 10px;
+    margin: 10px;
+    text-decoration: none;
+    font-family: SpriteGraffiti;
+    &.active {
+      color: #2d2d2d;
+    }
+    &:hover {
+      color: #2d2d2d;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .navigation {
+    & a {
+      font-size: 24px;
+      padding: 8px;
+      margin: 8px;
+    }
+  }
+}
+@media (max-width: 992px) {
+  .navigation {
+    & a {
+      font-size: 18px;
+      padding: 6px;
+      margin: 6px;
+    }
+  }
+}
+@media (max-width: 767px) {
+  .navigation {
+    flex-wrap: wrap;
+    & a {
+      font-size: 14px;
+      padding: 2px;
+      margin: 2px;
+    }
+  }
+}
