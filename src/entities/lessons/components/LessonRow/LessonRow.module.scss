@@ -1,0 +1,42 @@
+.lesson_row {
+  & a {
+    text-decoration: none;
+    color: #69306d;
+    font-size: 24px;
+  }
+  & .songs {
+    color: #999999;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .lesson_row {
+    & a {
+      font-size: 22px;
+    }
+    & .songs {
+      font-size: 18px;
+    }
+  }
+}
+@media (max-width: 992px) {
+  .lesson_row {
+    & a {
+      font-size: 20px;
+    }
+    & .songs {
+      font-size: 16px;
+    }
+  }
+}
+@media (max-width: 767px) {
+  .lesson_row {
+    & a {
+      font-size: 16px;
+    }
+    & .songs {
+      font-size: 14px;
+    }
+  }
+}
