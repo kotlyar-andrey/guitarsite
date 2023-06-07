@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SimpleLesson } from "../../models/interfaces";
+import { SimpleLesson } from "../../model/interfaces";
 import styles from "./LessonRow.module.scss";
 
 interface Props {

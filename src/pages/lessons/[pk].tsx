@@ -1,8 +1,11 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
-import { FullLesson, SimpleLesson } from "~/entities/lessons";
+import { ChordView } from "~/entities/chords";
+import { FullLesson, LessonHead, SimpleLesson } from "~/entities/lessons";
 import { loadLesson, loadLessonsList } from "~/shared/api/content";
 import { MainLayout } from "~/shared/components/MainLayout";
+import { SongView } from "~/widgets/lessons";
+import { SongsContainer } from "~/widgets/lessons/components/SongsContainer";
 
 interface Props {
   lesson: FullLesson;
@@ -47,7 +50,12 @@ const Lesson = ({ lesson }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainLayout>
-        <h1>{lesson.title}</h1>
+        <LessonHead
+          title={lesson.title}
+          video={lesson.video}
+          addition={lesson.additions}
+        />
+        <SongsContainer songs={lesson.songs} />
       </MainLayout>
     </>
   );

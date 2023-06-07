@@ -1,3 +1,4 @@
+import { Footer } from "../Footer";
 import { Header } from "../Header";
 import styles from "./MainLayout.module.scss";
 
@@ -13,6 +14,7 @@ export const MainLayout: React.FC<Props> = ({ children }) => {
         <section className={styles.content}>{children}</section>
         <aside></aside>
       </main>
+      <Footer />
     </>
   );
 };

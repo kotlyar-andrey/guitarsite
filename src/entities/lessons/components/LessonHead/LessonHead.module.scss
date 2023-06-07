@@ -1,0 +1,21 @@
+.lesson_head {
+  & h1 {
+    font-family: SpriteGraffiti;
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+  }
+  & iframe {
+    border: 1px solid green;
+  }
+}
+
+.horizontal_row {
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+
+  & iframe {
+    margin: 0 10px;
+  }
+}

@@ -1,11 +1,11 @@
 .lesson_row {
   & a {
     text-decoration: none;
-    color: #69306d;
+    color: var(--primary);
     font-size: 24px;
   }
   & .songs {
-    color: #999999;
+    color: var(--secondary);
     font-size: 20px;
   }
 }

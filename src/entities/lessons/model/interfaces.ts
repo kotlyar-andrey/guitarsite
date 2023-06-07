@@ -1,21 +1,4 @@
-interface Fret {
-  pk: number;
-  string: number;
-  lad: number;
-  number: number;
-}
-
-export interface Chord {
-  pk: number;
-  title: string;
-  muz_title: string;
-  nove: string;
-  order: number;
-  start_lad: number;
-  bare: boolean;
-  lads: Fret[];
-  code: string;
-}
+import { Chord } from "~/entities/chords";
 
 export interface Scheme {
   pk: number;
@@ -30,7 +13,7 @@ export interface Beat {
   strikes: string[];
 }
 
-interface Song {
+export interface Song {
   pk: number;
   title: string;
   chords: Chord[];
@@ -40,7 +23,7 @@ interface Song {
   metronome: number;
 }
 
-interface Addition {
+export interface Addition {
   pk: number;
   title: string;
   video: string;
