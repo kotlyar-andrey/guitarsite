@@ -1,0 +1,29 @@
+.markdown {
+  & h1,
+  & h2,
+  & h3 {
+    font-size: 18px;
+    margin: 0;
+    padding: 4px;
+    background-color: #f2d7ee;
+  }
+  & h5 {
+    margin: 0;
+  }
+  & h6 {
+    margin: 0;
+    padding: 2px;
+    font-size: 20px;
+    font-weight: normal;
+    background-color: #d5e0ff;
+  }
+  & strong {
+    font-weight: bold;
+    padding: 4px;
+    margin: 8px 0 2px 0;
+  }
+  & p {
+    margin: 2px;
+    padding: 2px;
+  }
+}

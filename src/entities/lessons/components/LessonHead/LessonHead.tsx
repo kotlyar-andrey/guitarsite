@@ -1,5 +1,7 @@
+import React from "react";
 import { Addition } from "../../model/interfaces";
 import styles from "./LessonHead.module.scss";
+import { AccordionContainer } from "~/shared/components/AccordionContainer/AccordionContainer";
 
 interface Props {
   title: string;
@@ -8,10 +10,17 @@ interface Props {
 }
 
 export const LessonHead = ({ title, video, addition }: Props) => {
+  const [videoVisible, setVideoVisible] = React.useState(true);
   return (
     <div className={styles.lesson_head}>
       <h1>{title}</h1>
-      <div className={styles.horizontal_row}>
+      <AccordionContainer
+        title="Видео"
+        visible={videoVisible}
+        toggleVisible={() => {
+          setVideoVisible(!videoVisible);
+        }}
+      >
         <iframe
           width="560"
           height="315"
@@ -20,7 +29,7 @@ export const LessonHead = ({ title, video, addition }: Props) => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen={true}
         ></iframe>
-      </div>
+      </AccordionContainer>
     </div>
   );
 };

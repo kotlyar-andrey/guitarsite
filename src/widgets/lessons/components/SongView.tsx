@@ -1,9 +1,43 @@
+import React from "react";
+import ReactMarkdown from "react-markdown";
+
 import { Song } from "~/entities/lessons";
+
+import { AccordionContainer } from "~/shared/components/AccordionContainer/AccordionContainer";
+import { TextMarkdown } from "~/shared/components/TextMarkdown";
 
 interface Props {
   song: Song;
 }
 
 export const SongView = ({ song }: Props) => {
-  return <div>{song.title}</div>;
+  // TODO: move state to redux
+  const [chordsVisible, setChordsVisible] = React.useState<boolean>(true);
+  const [beatsVisible, setBeatsVisible] = React.useState<boolean>(true);
+
+  return (
+    <div>
+      <h3>{song.title}</h3>
+      <AccordionContainer
+        title="Аккорды"
+        toggleVisible={() => {
+          setChordsVisible(!chordsVisible);
+        }}
+        visible={chordsVisible}
+      >
+        <div>Content</div>
+      </AccordionContainer>
+      <AccordionContainer
+        title="Ритмические бои"
+        toggleVisible={() => {
+          setBeatsVisible(!beatsVisible);
+        }}
+        visible={beatsVisible}
+      >
+        <div>Content</div>
+      </AccordionContainer>
+      <h3>Text:</h3>
+      <TextMarkdown text={song.text} />
+    </div>
+  );
 };

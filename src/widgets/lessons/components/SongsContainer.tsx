@@ -9,19 +9,17 @@ interface Props {
 
 export const SongsContainer = ({ songs }: Props) => {
   return (
-    <div>
-      <Tabs>
-        <TabList>
-          {songs.map((song, index) => (
-            <Tab key={`tab${song.pk}`}>{`Текст ${index + 1}`}</Tab>
-          ))}
-        </TabList>
-        {songs.map((song) => (
-          <TabPanel key={`panel${song.pk}`}>
-            <SongView song={song} />
-          </TabPanel>
+    <Tabs>
+      <TabList>
+        {songs.map((song, index) => (
+          <Tab key={`tab${song.pk}`}>{`Текст ${index + 1}`}</Tab>
         ))}
-      </Tabs>
-    </div>
+      </TabList>
+      {songs.map((song) => (
+        <TabPanel key={`panel${song.pk}`}>
+          <SongView song={song} />
+        </TabPanel>
+      ))}
+    </Tabs>
   );
 };
