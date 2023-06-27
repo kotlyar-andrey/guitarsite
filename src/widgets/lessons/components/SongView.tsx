@@ -5,6 +5,7 @@ import { Song } from "~/entities/lessons";
 
 import { AccordionContainer } from "~/shared/components/AccordionContainer/AccordionContainer";
 import { TextMarkdown } from "~/shared/components/TextMarkdown";
+import { ChordsContainer } from "../chords/ChordsContainer";
 
 interface Props {
   song: Song;
@@ -25,7 +26,7 @@ export const SongView = ({ song }: Props) => {
         }}
         visible={chordsVisible}
       >
-        <div>Content</div>
+        <ChordsContainer chords={song.chords} />
       </AccordionContainer>
       <AccordionContainer
         title="Ритмические бои"
