@@ -2,23 +2,31 @@ import React from "react";
 import { Addition } from "../../model/interfaces";
 import styles from "./LessonHead.module.scss";
 import { AccordionContainer } from "~/shared/components/AccordionContainer/AccordionContainer";
+import { useStore } from "~/shared/hooks/store";
+import { useLessonSettings } from "~/features/lessonsSettings";
 
 interface Props {
+  lessonPk: number;
   title: string;
   video: string;
   addition: Addition[];
 }
 
-export const LessonHead = ({ title, video, addition }: Props) => {
-  const [videoVisible, setVideoVisible] = React.useState(true);
+export const LessonHead = ({ lessonPk, title, video, addition }: Props) => {
+  // const [videoVisible, setVideoVisible] = React.useState(true);
+  const store = useStore(useLessonSettings, (state) => ({
+    getLessonSettings: state.getSettingsByPk,
+    toggleVideoVisible: state.toggleVideoVisible,
+  }));
+  const settings = store?.getLessonSettings(lessonPk);
   return (
     <div className={styles.lesson_head}>
       <h1>{title}</h1>
       <AccordionContainer
         title="Видео"
-        visible={videoVisible}
+        visible={settings ? settings.videoVisible : true}
         toggleVisible={() => {
-          setVideoVisible(!videoVisible);
+          store?.toggleVideoVisible(lessonPk);
         }}
       >
         <iframe

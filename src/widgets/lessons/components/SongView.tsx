@@ -6,15 +6,21 @@ import { Song } from "~/entities/lessons";
 import { AccordionContainer } from "~/shared/components/AccordionContainer/AccordionContainer";
 import { TextMarkdown } from "~/shared/components/TextMarkdown";
 import { ChordsContainer } from "../chords/ChordsContainer";
+import { useLessonSettings } from "~/features/lessonsSettings";
+import { useStore } from "~/shared/hooks/store";
 
 interface Props {
   song: Song;
+  lessonPk: number;
 }
 
-export const SongView = ({ song }: Props) => {
-  // TODO: move state to redux
-  const [chordsVisible, setChordsVisible] = React.useState<boolean>(true);
-  const [beatsVisible, setBeatsVisible] = React.useState<boolean>(true);
+export const SongView: React.FC<Props> = ({ song, lessonPk }) => {
+  const store = useStore(useLessonSettings, (state) => ({
+    getLessonSettings: state.getSettingsByPk,
+    toggleChordsVisible: state.toggleChordsVisible,
+    toggleBeatsVisible: state.toggleBeatsVisible,
+  }));
+  const settings = store?.getLessonSettings(lessonPk);
 
   return (
     <div>
@@ -22,18 +28,18 @@ export const SongView = ({ song }: Props) => {
       <AccordionContainer
         title="Аккорды"
         toggleVisible={() => {
-          setChordsVisible(!chordsVisible);
+          store?.toggleChordsVisible(lessonPk);
         }}
-        visible={chordsVisible}
+        visible={settings ? settings.chordsVisible : false}
       >
         <ChordsContainer chords={song.chords} />
       </AccordionContainer>
       <AccordionContainer
         title="Ритмические бои"
         toggleVisible={() => {
-          setBeatsVisible(!beatsVisible);
+          store?.toggleBeatsVisible(lessonPk);
         }}
-        visible={beatsVisible}
+        visible={settings ? settings.beatsVisible : true}
       >
         <div>Content</div>
       </AccordionContainer>

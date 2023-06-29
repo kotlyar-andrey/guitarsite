@@ -19,7 +19,7 @@ export const AccordionContainer: React.FC<Props> = ({
       <div className={styles.titleContainer}>
         <span />
         {visible && <span className={styles.title}>{title}</span>}
-        <span onClick={toggleVisible} className={styles.toolbar}>
+        <div onClick={toggleVisible} className={styles.toolbar}>
           {visible ? (
             <span>
               <IoEyeOffOutline />
@@ -30,7 +30,7 @@ export const AccordionContainer: React.FC<Props> = ({
               <IoEyeOutline />
             </>
           )}
-        </span>
+        </div>
       </div>
       {visible && <div>{children}</div>}
     </div>

@@ -5,9 +5,10 @@ import { SongView } from "./SongView";
 
 interface Props {
   songs: Song[];
+  lessonPk: number;
 }
 
-export const SongsContainer = ({ songs }: Props) => {
+export const SongsContainer = ({ songs, lessonPk }: Props) => {
   return (
     <Tabs>
       <TabList>
@@ -17,7 +18,7 @@ export const SongsContainer = ({ songs }: Props) => {
       </TabList>
       {songs.map((song) => (
         <TabPanel key={`panel${song.pk}`}>
-          <SongView song={song} />
+          <SongView song={song} lessonPk={lessonPk} />
         </TabPanel>
       ))}
     </Tabs>

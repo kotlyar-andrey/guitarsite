@@ -51,11 +51,12 @@ const Lesson = ({ lesson }: Props) => {
       </Head>
       <MainLayout>
         <LessonHead
+          lessonPk={lesson.pk}
           title={lesson.title}
           video={lesson.video}
           addition={lesson.additions}
         />
-        <SongsContainer songs={lesson.songs} />
+        <SongsContainer songs={lesson.songs} lessonPk={lesson.pk} />
       </MainLayout>
     </>
   );
