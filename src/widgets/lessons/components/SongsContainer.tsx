@@ -2,6 +2,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { Song } from "~/entities/lessons";
 import { SongView } from "./SongView";
+import styles from "./SongsContainer.module.scss";
 
 interface Props {
   songs: Song[];
@@ -12,8 +13,14 @@ export const SongsContainer = ({ songs, lessonPk }: Props) => {
   return (
     <Tabs>
       <TabList>
-        {songs.map((song, index) => (
-          <Tab key={`tab${song.pk}`}>{`Текст ${index + 1}`}</Tab>
+        {songs.map((song) => (
+          <Tab
+            className={styles.song_tab}
+            selectedClassName={styles.selected}
+            key={`tab${song.pk}`}
+          >
+            {song.title}
+          </Tab>
         ))}
       </TabList>
       {songs.map((song) => (

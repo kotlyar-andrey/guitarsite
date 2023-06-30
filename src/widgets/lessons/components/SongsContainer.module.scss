@@ -1,0 +1,18 @@
+.song_tab {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-bottom: none;
+  bottom: -1px;
+  position: relative;
+  list-style: none;
+  padding: 6px 12px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.selected {
+  background: var(--background);
+  border-color: var(--secondary);
+  color: var(--primary);
+  border-radius: 5px 5px 0 0;
+  font-weight: bold;
+}

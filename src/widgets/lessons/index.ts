@@ -1,1 +1,1 @@
-export { SongView } from "./components/SongView";
+export { SongsContainer } from "./components/SongsContainer";

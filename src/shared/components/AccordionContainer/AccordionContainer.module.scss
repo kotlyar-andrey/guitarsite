@@ -16,11 +16,20 @@
     }
     & .toolbar {
       font-size: 14px;
-      cursor: pointer;
       color: var(--secondary);
       padding: 2px;
       vertical-align: middle;
+      display: flex;
+      & div {
+        cursor: pointer;
+        padding: 0 4px;
+        margin: 0 2px;
+        &:hover {
+          color: var(--primary);
+        }
+      }
       & svg {
+        font-size: 20px;
         vertical-align: middle;
       }
     }

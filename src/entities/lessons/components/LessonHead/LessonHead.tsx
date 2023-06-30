@@ -13,7 +13,6 @@ interface Props {
 }
 
 export const LessonHead = ({ lessonPk, title, video, addition }: Props) => {
-  // const [videoVisible, setVideoVisible] = React.useState(true);
   const store = useStore(useLessonSettings, (state) => ({
     getLessonSettings: state.getSettingsByPk,
     toggleVideoVisible: state.toggleVideoVisible,

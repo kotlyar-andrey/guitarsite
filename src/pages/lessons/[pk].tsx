@@ -1,11 +1,9 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
-import { ChordView } from "~/entities/chords";
 import { FullLesson, LessonHead, SimpleLesson } from "~/entities/lessons";
 import { loadLesson, loadLessonsList } from "~/shared/api/content";
 import { MainLayout } from "~/shared/components/MainLayout";
-import { SongView } from "~/widgets/lessons";
-import { SongsContainer } from "~/widgets/lessons/components/SongsContainer";
+import { SongsContainer } from "~/widgets/lessons";
 
 interface Props {
   lesson: FullLesson;

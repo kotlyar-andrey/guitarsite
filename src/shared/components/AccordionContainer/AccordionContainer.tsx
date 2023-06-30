@@ -5,6 +5,7 @@ type Props = {
   title: string;
   visible: boolean;
   toggleVisible: () => void;
+  additionToolbar?: React.ReactNode;
   children: React.ReactNode;
 };
 
@@ -12,22 +13,27 @@ export const AccordionContainer: React.FC<Props> = ({
   title,
   visible,
   toggleVisible,
+  additionToolbar,
   children,
 }) => {
   return (
     <div className={styles.accordion}>
       <div className={styles.titleContainer}>
-        <span />
+        <div />
         {visible && <span className={styles.title}>{title}</span>}
-        <div onClick={toggleVisible} className={styles.toolbar}>
+        <div className={styles.toolbar}>
           {visible ? (
-            <span>
-              <IoEyeOffOutline />
-            </span>
+            <>
+              {additionToolbar}
+              <div onClick={toggleVisible}>
+                <IoEyeOffOutline />
+              </div>
+            </>
           ) : (
             <>
-              <span>Показать {title.toLowerCase()} </span>
-              <IoEyeOutline />
+              <div onClick={toggleVisible}>
+                Показать {title.toLowerCase()} <IoEyeOutline />
+              </div>
             </>
           )}
         </div>

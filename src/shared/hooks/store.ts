@@ -5,13 +5,11 @@ export const useStore = <T, F>(
   callback: (state: T) => F
 ) => {
   const result = store(callback) as F;
-  const [data, setData] = useState<F | undefined>();
+  const [data, setData] = useState<boolean>();
 
   useEffect(() => {
-    if (!data) {
-      setData(result);
-    }
-  }, [result, data]);
+    setData(true);
+  }, []);
 
-  return data;
+  return data ? result : null;
 };
