@@ -9,6 +9,8 @@ import { useLessonSettings } from "~/features/lessonsSettings";
 import { useStore } from "~/shared/hooks/store";
 import { ChordSettingsToolbar } from "~/widgets/chords/ChordSettingsToolbar";
 import { TextSettingsToolbar } from "./TextSettingsToolbar";
+import { BeatsContainer } from "~/widgets/beats/BeatsContainer";
+import { BeatSettingsToolbar } from "~/widgets/beats/BeatSettingsToolbar";
 
 interface Props {
   song: Song;
@@ -39,13 +41,14 @@ export const SongView: React.FC<Props> = ({ song, lessonPk }) => {
       )}
       {song.beats.length > 0 && (
         <AccordionContainer
-          title="Ритмические бои"
+          title="Ритмические рисунки"
           toggleVisible={() => {
             store?.toggleBeatsVisible(lessonPk);
           }}
           visible={settings ? settings.beatsVisible : true}
+          additionToolbar={<BeatSettingsToolbar />}
         >
-          <div>Content</div>
+          <BeatsContainer beats={song.beats} />
         </AccordionContainer>
       )}
       <AccordionContainer
