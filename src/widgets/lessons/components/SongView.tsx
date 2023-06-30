@@ -8,6 +8,7 @@ import { ChordsContainer } from "../../chords/ChordsContainer";
 import { useLessonSettings } from "~/features/lessonsSettings";
 import { useStore } from "~/shared/hooks/store";
 import { ChordSettingsToolbar } from "~/widgets/chords/ChordSettingsToolbar";
+import { TextSettingsToolbar } from "./TextSettingsToolbar";
 
 interface Props {
   song: Song;
@@ -47,8 +48,13 @@ export const SongView: React.FC<Props> = ({ song, lessonPk }) => {
           <div>Content</div>
         </AccordionContainer>
       )}
-      <h3>Text:</h3>
-      <TextMarkdown text={song.text} />
+      <AccordionContainer
+        title="Текст"
+        visible={true}
+        additionToolbar={<TextSettingsToolbar />}
+      >
+        <TextMarkdown text={song.text} />
+      </AccordionContainer>
     </div>
   );
 };

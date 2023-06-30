@@ -4,7 +4,7 @@ import styles from "./AccordionContainer.module.scss";
 type Props = {
   title: string;
   visible: boolean;
-  toggleVisible: () => void;
+  toggleVisible?: () => void;
   additionToolbar?: React.ReactNode;
   children: React.ReactNode;
 };
@@ -25,9 +25,11 @@ export const AccordionContainer: React.FC<Props> = ({
           {visible ? (
             <>
               {additionToolbar}
-              <div onClick={toggleVisible}>
-                <IoEyeOffOutline />
-              </div>
+              {toggleVisible && (
+                <div onClick={toggleVisible}>
+                  <IoEyeOffOutline />
+                </div>
+              )}
             </>
           ) : (
             <>

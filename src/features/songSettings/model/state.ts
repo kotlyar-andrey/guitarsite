@@ -3,8 +3,10 @@ import { persist } from "zustand/middleware";
 import {
   MAX_BEAT_SIZE,
   MAX_CHORD_SIZE,
+  MAX_TEXT_SIZE,
   MIN_BEAT_SIZE,
   MIN_CHORD_SIZE,
+  MIN_TEXT_SIZE,
 } from "./consts";
 
 interface SongSetting {
@@ -16,6 +18,8 @@ interface SongSetting {
   decreaseChordSize: () => void;
   increaseBeatSize: () => void;
   decreaseBeatSize: () => void;
+  increaseTextSize: () => void;
+  decreaseTextSize: () => void;
   toggleOrientation: () => void;
 }
 
@@ -48,6 +52,18 @@ export const useSongSettings = create<SongSetting>()(
         const currentSize = get().beatSize;
         if (currentSize > MIN_BEAT_SIZE) {
           set({ beatSize: currentSize - 1 });
+        }
+      },
+      increaseTextSize: () => {
+        const currentSize = get().textSize;
+        if (currentSize < MAX_TEXT_SIZE) {
+          set({ textSize: currentSize + 2 });
+        }
+      },
+      decreaseTextSize: () => {
+        const currentSize = get().textSize;
+        if (currentSize > MIN_TEXT_SIZE) {
+          set({ textSize: currentSize - 2 });
         }
       },
       toggleOrientation: () => {
