@@ -129,8 +129,6 @@ export const getNoteColors = (
   return { fillColor, textColor };
 };
 
-export const getA11yLabel = (chord: Chord): string => `Аккорд ${chord.title}`;
-
 const getFingerByNumber = (finderNum: number): string => {
   switch (finderNum) {
     case 1:
@@ -146,7 +144,7 @@ const getFingerByNumber = (finderNum: number): string => {
   }
 };
 
-export const getA11yHint = (chord: Chord): string => {
+export const getA11yLabel = (chord: Chord): string => {
   const bareHint = chord.bare
     ? `Баррэ зажимается на ${chord.start_lad} ладу`
     : "";
@@ -169,5 +167,5 @@ export const getA11yHint = (chord: Chord): string => {
       }
     })
     .join(" ");
-  return `${bareHint} ${resultString}`;
+  return `Аккорд ${chord.title}. ${bareHint} ${resultString}`;
 };

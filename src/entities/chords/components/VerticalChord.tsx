@@ -11,8 +11,10 @@ import {
   getStrokeWidth,
   getNoteColors,
   getA11yLabel,
-  getA11yHint,
 } from "./utils";
+import { useTheme } from "next-themes";
+import { useMounted } from "~/shared/hooks/mounted";
+import { Loading } from "~/shared/components/Loading";
 
 export const VerticalChord = ({ chord }: Props) => {
   const { x: tonicX, y: tonicY } = getTonicCoords("vertical", chord.title[0]);
@@ -25,23 +27,34 @@ export const VerticalChord = ({ chord }: Props) => {
 
   const stringBegin = chord.start_lad === 1 ? 30 : 25;
 
-  const dark = false;
+  const { theme } = useTheme();
 
-  const fillColor = dark ? "white" : "black";
+  const dark = theme?.includes("dark");
+
+  const textColor = dark ? "#e9e9e9" : "#2d2d2d";
+
+  const mounted = useMounted();
+
+  if (!mounted) return <Loading />;
 
   return (
-    <svg height="100%" widths="100%" viewBox="0 0 100 200">
+    <svg
+      height="100%"
+      widths="100%"
+      viewBox="0 0 100 200"
+      aria-label={getA11yLabel(chord)}
+    >
       {/* Название */}
-      <text fill={fillColor} fontSize="16" x="50" y="12" textAnchor="middle">
+      <text fill={textColor} fontSize="16" x="50" y="12" textAnchor="middle">
         {chord.title}
       </text>
-      <text fill={fillColor} fontSize="8" x="50" y="20" textAnchor="middle">
+      <text fill={textColor} fontSize="8" x="50" y="20" textAnchor="middle">
         {chord.muz_title}
       </text>
 
       {/* Тоника */}
       <text
-        fill={fillColor}
+        fill={textColor}
         fontSize="6"
         fontWeight="bold"
         x={tonicX}
@@ -80,7 +93,7 @@ export const VerticalChord = ({ chord }: Props) => {
       {fretNumbers.map((fret) => (
         <text
           key={`fretNumberN${fret}`}
-          fill={fillColor}
+          fill={textColor}
           fontSize="9"
           x="2"
           y={53 + fret * 40}

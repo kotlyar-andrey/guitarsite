@@ -11,11 +11,11 @@ export const TextMarkdown: React.FC<Props> = ({ text }) => {
   const store = useStore(useSongSettings, (state) => ({
     textSize: state.textSize,
   }));
+
+  const size = store ? store.textSize : 14;
+
   return (
-    <div
-      style={{ fontSize: `${store?.textSize}px` }}
-      className={styles.markdown}
-    >
+    <div style={{ fontSize: `${size}px` }} className={styles.markdown}>
       <ReactMarkdown>{text}</ReactMarkdown>
     </div>
   );

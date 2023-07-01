@@ -8,11 +8,11 @@
   --errorText: #a94442;
   --errorBackground: #fdc1ba;
   --divider: #eeeeee;
-  --beat: #0000ff;
-  --plunk: #000077;
   --isFavoriteColor: #ff0000;
   --isCompliteColor: #00bb00;
   --isDownloadedColor: #7777ff;
+  --songVerse: #d5e0ff;
+  --songDanger: #f2d7ee;
   --background-image: url(../assets/images/bg.jpg);
 }
 
@@ -26,11 +26,11 @@
   --errorText: #f90000;
   --errorBackground: #eda19a;
   --divider: #000000;
-  --beat: #7777ff;
-  --plunk: #7777ff;
   --isFavoriteColor: #990000;
   --isCompliteColor: #007700;
   --isDownloadedColor: #7777ff;
+  --songVerse: #202025;
+  --songDanger: #8d4242;
   --background-image: url(../assets/images/darkbg.jpg);
 }
 
@@ -44,10 +44,10 @@
   --errorText: #f90000;
   --errorBackground: #eda19a;
   --divider: #000000;
-  --beat: #ed424d;
-  --plunk: #ed424d;
   --isFavoriteColor: #990000;
   --isCompliteColor: #007700;
   --isDownloadedColor: #7777ff;
+  --songVerse: #202025;
+  --songDanger: #8d4242;
   --background-image: url(../assets/images/darkbg.jpg);
 }

@@ -1,21 +1,18 @@
-import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { Loading } from "~/shared/components/Loading";
+import { useMounted } from "~/shared/hooks/mounted";
 
-export const ThemeSwitcher = () => {
-  const [mounted, setMounted] = useState(false);
+export const ThemeSwitcher: React.FC = () => {
   const { theme, setTheme } = useTheme();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useMounted();
 
   if (!mounted) {
-    return "loading...";
+    return <Loading />;
   }
 
   return (
     <select value={theme} onChange={(e) => setTheme(e.target.value)}>
-      <option value="system">Системная</option>
       <option value="dark">Темная</option>
       <option value="light">Светлая</option>
     </select>

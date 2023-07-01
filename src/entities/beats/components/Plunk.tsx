@@ -1,25 +1,40 @@
+import { useTheme } from "next-themes";
 import { Beat } from "../model/interfaces";
+import { getA11yLabel, getPlunkColors } from "./util";
+import { useMounted } from "~/shared/hooks/mounted";
+import { Loading } from "~/shared/components/Loading";
 
 interface Props {
   beat: Beat;
 }
 
 export const PlunkView: React.FC<Props> = ({ beat }) => {
-  const color = "blue";
-  const color2 = "#e0e0e0";
   const inscriptionHeight = 12;
   const oneFretSize = (100 - inscriptionHeight) / beat.strikes.length;
+
+  const { theme } = useTheme();
+  const colors = getPlunkColors(theme);
+
+  const mounted = useMounted();
+
+  if (!mounted) return <Loading />;
+
   return (
-    <svg height="100%" width="100%" viewBox="0 0 40 100">
+    <svg
+      height="100%"
+      width="100%"
+      viewBox="0 0 40 100"
+      aria-label={getA11yLabel(beat)}
+    >
       <symbol id="t" viewBox="0 0 40 40">
-        <circle cx="20" cy="20" r="15" strokeWidth="2" />
+        <circle cx="22" cy="20" r="15" strokeWidth="2" fill="transparent" />
         <text
           fontSize="22"
           x="22"
           y="28"
           textAnchor="middle"
           letterSpacing="1"
-          fill={color}
+          fill={colors.beat}
         >
           T
         </text>
@@ -57,13 +72,13 @@ export const PlunkView: React.FC<Props> = ({ beat }) => {
         y={1}
         width={38}
         height={98}
-        stroke={color2}
+        stroke={colors.secondary}
         strokeWidth={1}
         fill="transparent"
       />
       {beat.inscription && (
         <text
-          fill={color}
+          fill={colors.inscription}
           fontSize="8"
           x="20"
           y={inscriptionHeight - 2}
@@ -76,20 +91,20 @@ export const PlunkView: React.FC<Props> = ({ beat }) => {
         switch (fret) {
           case "t":
             return (
-              <g key={`fret${fretIndex}`} stroke={color}>
+              <g key={`fret${fretIndex}`} stroke={colors.beat}>
                 <use
                   href="#t"
                   x={(40 - oneFretSize) / 2}
                   y={fretIndex * oneFretSize + inscriptionHeight}
                   width={oneFretSize}
                   height={oneFretSize}
-                  stroke={color}
+                  stroke={colors.beat}
                 />
               </g>
             );
           case "downup":
             return (
-              <g key={`fret${fretIndex}`} stroke={color}>
+              <g key={`fret${fretIndex}`} stroke={colors.beat}>
                 <use
                   href="#downup"
                   x={(40 - oneFretSize) / 2}
@@ -104,15 +119,15 @@ export const PlunkView: React.FC<Props> = ({ beat }) => {
           case "3":
           case "4":
             return (
-              <g key={`fret${fretIndex}`} stroke={color}>
+              <g key={`fret${fretIndex}`} stroke={colors.beat}>
                 <use
                   href={`#fret${fret}`}
                   x={(40 - oneFretSize) / 2}
                   y={fretIndex * oneFretSize + inscriptionHeight}
                   width={oneFretSize}
                   height={oneFretSize}
-                  stroke={color}
-                  fill={color}
+                  stroke={colors.beat}
+                  fill={colors.beat}
                 />
               </g>
             );

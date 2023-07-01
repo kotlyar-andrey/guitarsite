@@ -8,8 +8,10 @@ import {
   getStrokeWidth,
   getNoteColors,
   getA11yLabel,
-  getA11yHint,
 } from "./utils";
+import { useTheme } from "next-themes";
+import { useMounted } from "~/shared/hooks/mounted";
+import { Loading } from "~/shared/components/Loading";
 
 interface Props {
   chord: Chord;
@@ -26,18 +28,29 @@ export const HorizontalChord: React.FC<Props> = ({ chord }) => {
 
   const stringEnd = chord.start_lad === 1 ? 190 : 195;
 
-  const dark = false;
+  const { theme } = useTheme();
 
-  const fillColor = dark ? "white" : "black";
+  const dark = theme?.includes("dark");
+
+  const textColor = dark ? "#e9e9e9" : "#2d2d2d";
+
+  const mounted = useMounted();
+
+  if (!mounted) return <Loading />;
 
   return (
-    <svg height="100%" width="100%" viewBox="0 0 200 100">
+    <svg
+      height="100%"
+      width="100%"
+      viewBox="0 0 200 100"
+      aria-label={getA11yLabel(chord)}
+    >
       {/* Название */}
-      <text fill={fillColor} fontSize="10" x="100" y="7" textAnchor="middle">
+      <text fill={textColor} fontSize="10" x="100" y="7" textAnchor="middle">
         {chord.title}
       </text>
       <text
-        fill={fillColor}
+        fill={textColor}
         fontSize="8"
         fontWeight="bold"
         x="100"
@@ -48,7 +61,7 @@ export const HorizontalChord: React.FC<Props> = ({ chord }) => {
       </text>
       {/* Тоника */}
       <text
-        fill={fillColor}
+        fill={textColor}
         fontSize="6"
         fontWeight="bold"
         x={tonicX}
@@ -85,7 +98,7 @@ export const HorizontalChord: React.FC<Props> = ({ chord }) => {
       {fretNumbers.map((fret) => (
         <text
           key={`fretNumberN${fret}`}
-          fill={fillColor}
+          fill={textColor}
           fontSize="9"
           x={168 - fret * 45}
           y="25"

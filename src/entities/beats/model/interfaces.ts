@@ -5,3 +5,9 @@ export interface Beat {
   duration: number;
   strikes: string[];
 }
+
+export interface BeatColors {
+  secondary: string;
+  inscription: string;
+  beat: string;
+}
