@@ -1,39 +1,39 @@
 import Head from "next/head";
 import { GetStaticProps } from "next";
 import { MainLayout } from "~/shared/components/MainLayout";
-import { loadLessonsList } from "~/shared/api/content";
+import { loadHowtoplaysList } from "~/shared/api/content";
 import { LessonRow, SimpleLesson } from "~/entities/lessons";
 
 interface Props {
-  lessons: SimpleLesson[];
+  howtoplays: SimpleLesson[];
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const lessons = await loadLessonsList();
+  const howtoplays = await loadHowtoplaysList();
   return {
-    props: { lessons },
+    props: { howtoplays },
   };
 };
 
-const Home = ({ lessons }: Props) => {
+const Howtoplays: React.FC<Props> = ({ howtoplays }) => {
   return (
     <>
       <Head>
-        <title>Гитара с нуля - уроки</title>
+        <title>Гитара с нуля - разборы</title>
         <meta
           name="description"
-          content="Уроки игры на гитаре для начинающих"
+          content="Разборы игры на гитаре для начинающих. Как играть на гитаре"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainLayout>
-        {lessons.map((lesson: SimpleLesson) => (
+        {howtoplays.map((lesson: SimpleLesson) => (
           <LessonRow
             key={lesson.pk}
             lesson={lesson}
-            showSongs={true}
-            lessonType="lessons"
+            showSongs={false}
+            lessonType="howtoplays"
           />
         ))}
       </MainLayout>
@@ -41,4 +41,4 @@ const Home = ({ lessons }: Props) => {
   );
 };
 
-export default Home;
+export default Howtoplays;

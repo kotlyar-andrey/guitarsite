@@ -6,7 +6,7 @@ export const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <Logo />
-      <MainMenu activeLink="/" />
+      <MainMenu />
       <div></div>
       {/* for user login */}
     </header>

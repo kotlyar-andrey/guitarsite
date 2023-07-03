@@ -2,6 +2,7 @@ body {
   background-color: #ffffff;
   min-height: 100vh;
 }
+
 body::before {
   content: " ";
   position: fixed;
