@@ -5,10 +5,9 @@
     padding: 10px;
     text-align: center;
     letter-spacing: 3px;
+    font-size: 28px;
+    color: var(--primary);
   }
-  // & iframe {
-  //   border: 1px solid gray;
-  // }
 }
 
 .horizontal_row {
@@ -18,5 +17,17 @@
 
   & iframe {
     margin: 0 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .lesson_head {
+    & h1 {
+      padding: 4px;
+      font-size: 16px;
+    }
+    & iframe {
+      max-width: 100%;
+    }
   }
 }
