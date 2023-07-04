@@ -2,8 +2,41 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   padding: 20px;
-  background-color: var(--background);
   color: var(--text);
+
+  & .foreign_links {
+    padding: 4px;
+    border-radius: 4px;
+    & .socials {
+      display: flex;
+
+      justify-content: space-between;
+      align-items: center;
+      font-size: 53px;
+      background-color: var(--background);
+      padding: 4px;
+      border-radius: 4px;
+
+      & svg {
+        display: block;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .footer {
+    padding: 8px;
+    & .foreign_links {
+      & img {
+        height: 40px;
+        width: 136px;
+      }
+      & .socials {
+        font-size: 40px;
+      }
+    }
+  }
 }
