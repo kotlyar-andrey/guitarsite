@@ -1,13 +1,14 @@
 .markdown {
   & h1,
   & h2,
-  & h3 {
-    margin: 0;
-    padding: 4px;
-    background-color: var(--songDanger);
-  }
+  & h3,
   & h5 {
     margin: 0;
+  }
+  & h4 {
+    padding: 2px;
+    margin: 0 0 4px 0;
+    background-color: var(--songDanger);
   }
   & h6 {
     margin: 0;
