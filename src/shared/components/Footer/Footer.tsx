@@ -35,6 +35,11 @@ export const Footer: React.FC = () => {
         </div>
       </div>
 
+      <div>
+        <div>Пользовательское соглашение</div>
+        <div>Обратная связь</div>
+      </div>
+
       <ThemeSwitcher />
     </div>
   );
