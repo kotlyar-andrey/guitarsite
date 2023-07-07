@@ -1,17 +1,6 @@
+import { Beat } from "~/entities/beats";
 import { Chord } from "~/entities/chords";
-
-export interface Scheme {
-  pk: number;
-  image: string;
-}
-
-export interface Beat {
-  pk: number;
-  beat_type: number;
-  inscription: string;
-  duration: number;
-  strikes: string[];
-}
+import { Scheme } from "~/entities/schemes";
 
 export interface Song {
   pk: number;

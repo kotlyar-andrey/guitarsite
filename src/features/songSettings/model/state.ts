@@ -3,9 +3,11 @@ import { persist } from "zustand/middleware";
 import {
   MAX_BEAT_SIZE,
   MAX_CHORD_SIZE,
+  MAX_SCHEME_SIZE,
   MAX_TEXT_SIZE,
   MIN_BEAT_SIZE,
   MIN_CHORD_SIZE,
+  MIN_SCHEME_SIZE,
   MIN_TEXT_SIZE,
 } from "./consts";
 
@@ -13,11 +15,14 @@ interface SongSetting {
   chordOrientation: "horizontal" | "vertical";
   chordSize: number;
   beatSize: number;
+  schemeSize: number;
   textSize: number;
   increaseChordSize: () => void;
   decreaseChordSize: () => void;
   increaseBeatSize: () => void;
   decreaseBeatSize: () => void;
+  increaseSchemeSize: () => void;
+  decreaseSchemeSize: () => void;
   increaseTextSize: () => void;
   decreaseTextSize: () => void;
   toggleOrientation: () => void;
@@ -29,6 +34,7 @@ export const useSongSettings = create<SongSetting>()(
       chordOrientation: "horizontal",
       chordSize: 3,
       beatSize: 3,
+      schemeSize: 3,
       textSize: 14,
       increaseChordSize: () => {
         const currentSize = get().chordSize;
@@ -52,6 +58,18 @@ export const useSongSettings = create<SongSetting>()(
         const currentSize = get().beatSize;
         if (currentSize > MIN_BEAT_SIZE) {
           set({ beatSize: currentSize - 1 });
+        }
+      },
+      increaseSchemeSize: () => {
+        const currentSize = get().schemeSize;
+        if (currentSize < MAX_SCHEME_SIZE) {
+          set({ schemeSize: currentSize + 1 });
+        }
+      },
+      decreaseSchemeSize: () => {
+        const currentSize = get().schemeSize;
+        if (currentSize > MIN_SCHEME_SIZE) {
+          set({ schemeSize: currentSize - 1 });
         }
       },
       increaseTextSize: () => {

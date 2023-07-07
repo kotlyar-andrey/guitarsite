@@ -9,8 +9,8 @@ import { useLessonSettings } from "~/features/lessonsSettings";
 import { useStore } from "~/shared/hooks/store";
 import { ChordSettingsToolbar } from "~/widgets/chords/ChordSettingsToolbar";
 import { TextSettingsToolbar } from "./TextSettingsToolbar";
-import { BeatsContainer } from "~/widgets/beats/BeatsContainer";
-import { BeatSettingsToolbar } from "~/widgets/beats/BeatSettingsToolbar";
+import { SchemesContainer } from "~/widgets/schemes/SchemesContainer";
+import { SchemeSettingsToolbar } from "~/widgets/schemes/SchemeSettingsToolbar";
 
 interface Props {
   song: Song;
@@ -21,7 +21,7 @@ export const SongView: React.FC<Props> = ({ song, lessonPk }) => {
   const store = useStore(useLessonSettings, (state) => ({
     getLessonSettings: state.getSettingsByPk,
     toggleChordsVisible: state.toggleChordsVisible,
-    toggleBeatsVisible: state.toggleBeatsVisible,
+    toggleSchemesVisible: state.toggleSchemesVisible,
   }));
   const settings = store?.getLessonSettings(lessonPk);
 
@@ -39,18 +39,30 @@ export const SongView: React.FC<Props> = ({ song, lessonPk }) => {
           <ChordsContainer chords={song.chords} />
         </AccordionContainer>
       )}
-      {song.beats.length > 0 && (
+      {song.schemes.length > 0 && (
+        <AccordionContainer
+          title="Бои и переборы"
+          toggleVisible={() => {
+            store?.toggleSchemesVisible(lessonPk);
+          }}
+          visible={settings ? settings.schemesVisible : true}
+          additionToolbar={<SchemeSettingsToolbar />}
+        >
+          <SchemesContainer schemes={song.schemes} />
+        </AccordionContainer>
+      )}
+      {/* {song.beats.length > 0 && (
         <AccordionContainer
           title="Ритмические рисунки"
           toggleVisible={() => {
             store?.toggleBeatsVisible(lessonPk);
           }}
-          visible={settings ? settings.beatsVisible : true}
+          visible={settings ? settings.beatsVisible : false}
           additionToolbar={<BeatSettingsToolbar />}
         >
           <BeatsContainer beats={song.beats} />
         </AccordionContainer>
-      )}
+      )} */}
       <AccordionContainer
         title="Текст"
         visible={true}
