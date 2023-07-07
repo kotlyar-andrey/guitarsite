@@ -33,6 +33,7 @@ export interface Addition {
 export interface SimpleLesson {
   pk: number;
   title: string;
+  start_lesson: number | null;
   songs: { pk: string; title: string }[];
 }
 

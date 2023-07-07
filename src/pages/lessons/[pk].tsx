@@ -1,12 +1,18 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import { FullLesson, LessonHead, SimpleLesson } from "~/entities/lessons";
-import { loadLesson, loadLessonsList } from "~/shared/api/content";
+import {
+  loadHowtoplaysList,
+  loadLesson,
+  loadLessonsList,
+} from "~/shared/api/content";
 import { MainLayout } from "~/shared/components/MainLayout";
 import { SongsContainer } from "~/widgets/lessons";
+import { AdditionsContainer } from "~/widgets/lessons";
 
 interface Props {
   lesson: FullLesson;
+  howtoplays: SimpleLesson[];
 }
 
 interface Params {
@@ -35,10 +41,11 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
     };
   }
   const lesson = await loadLesson(params.pk);
-  return { props: { lesson } };
+  const howtoplays = await loadHowtoplaysList();
+  return { props: { lesson, howtoplays } };
 };
 
-const Lesson = ({ lesson }: Props) => {
+const Lesson: React.FC<Props> = ({ lesson, howtoplays }) => {
   return (
     <>
       <Head>
@@ -52,9 +59,14 @@ const Lesson = ({ lesson }: Props) => {
           lessonPk={lesson.pk}
           title={lesson.title}
           video={lesson.video}
-          addition={lesson.additions}
         />
         <SongsContainer songs={lesson.songs} lessonPk={lesson.pk} />
+        <AdditionsContainer
+          lessonNumber={lesson.number}
+          lessonPk={lesson.pk}
+          additions={lesson.additions}
+          howtoplays={howtoplays}
+        />
       </MainLayout>
     </>
   );

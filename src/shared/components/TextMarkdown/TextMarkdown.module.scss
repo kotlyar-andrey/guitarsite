@@ -7,23 +7,25 @@
   }
   & h4 {
     padding: 2px;
-    margin: 0 0 4px 0;
+    margin: 2px 0;
     background-color: var(--songDanger);
   }
   & h6 {
     margin: 0;
-    padding: 2px;
-    font-weight: normal;
+    padding: 4px;
+    font-weight: bold;
     background-color: var(--songVerse);
-    font-size: 24px;
+    font-size: 0.8em;
   }
   & strong {
     font-weight: bold;
     padding: 4px;
     margin: 8px 0 2px 0;
+    font-size: 0.8em;
   }
   & p {
     margin: 2px;
     padding: 2px;
+    font-size: 1em;
   }
 }

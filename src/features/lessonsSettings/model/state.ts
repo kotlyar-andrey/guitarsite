@@ -6,6 +6,7 @@ interface OneLessonSettings {
   videoVisible: boolean;
   chordsVisible: boolean;
   beatsVisible: boolean;
+  additionsVisible: boolean;
   isLessonComplite: boolean;
   isLessonFavorite: boolean;
 }
@@ -20,6 +21,7 @@ interface LessonsSettings {
   toggleVideoVisible: (lessonPk: number) => void;
   toggleChordsVisible: (lessonPk: number) => void;
   toggleBeatsVisible: (lessonPk: number) => void;
+  toggleAdditionsVisible: (lessonPk: number) => void;
   toggleIsLessonComplite: (lessonPk: number) => void;
   toggleIsLessonFavorite: (lessonPk: number) => void;
 }
@@ -28,6 +30,7 @@ const defaultLessonSettings: OneLessonSettings = {
   videoVisible: true,
   chordsVisible: true,
   beatsVisible: true,
+  additionsVisible: true,
   isLessonComplite: false,
   isLessonFavorite: false,
 };
@@ -79,6 +82,9 @@ export const useLessonSettings = create<LessonsSettings>()(
       },
       toggleBeatsVisible: (lessonPk: number) => {
         get().toggleSettingsField(lessonPk, "beatsVisible");
+      },
+      toggleAdditionsVisible: (lessonPk: number) => {
+        get().toggleSettingsField(lessonPk, "additionsVisible");
       },
       toggleIsLessonComplite: (lessonPk: number) => {
         get().toggleSettingsField(lessonPk, "isLessonComplite");
