@@ -57,7 +57,7 @@ export const AdditionsContainer: React.FC<Props> = ({
       )}
       {howtoplaysForLesson.length > 0 && (
         <div className={styles.howtoplays}>
-          <p>Разборы для дополнительное практики:</p>
+          <p>Разборы для дополнительной практики:</p>
           {howtoplaysForLesson.map((howtoplay) => (
             <Link key={howtoplay.pk} href={`/howtoplays/${howtoplay.pk}`}>
               {howtoplay.title}

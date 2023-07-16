@@ -9,7 +9,7 @@ interface Props {
 export const CustomizedScheme: React.FC<Props> = ({ scheme }) => {
   const schemeSize = useStore(useSongSettings, (state) => state.schemeSize);
   const size = schemeSize || 3;
-  const height = size * 40;
+  const height = size * 50 + 20;
 
   const imageSizeCoef = scheme.width / scheme.height;
 

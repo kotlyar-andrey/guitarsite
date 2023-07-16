@@ -1,14 +1,16 @@
 .markdown {
   & h1,
   & h2,
-  & h3,
-  & h5 {
+  & h3 {
     margin: 0;
   }
   & h4 {
     padding: 2px;
     margin: 2px 0;
     background-color: var(--songDanger);
+  }
+  & h5 {
+    margin: 0 0 18px 0;
   }
   & h6 {
     margin: 0;
@@ -20,12 +22,16 @@
   & strong {
     font-weight: bold;
     padding: 4px;
-    margin: 8px 0 2px 0;
+    margin: 8px 0 0px 0;
     font-size: 0.8em;
   }
   & p {
-    margin: 2px;
-    padding: 2px;
+    margin: 0 0 2px 0;
+    padding: 0;
     font-size: 1em;
+  }
+  & pre {
+    font-size: 0.8em;
+    overflow-x: auto;
   }
 }
