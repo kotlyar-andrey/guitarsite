@@ -5,6 +5,7 @@ import { BiLogoYoutube, BiLogoVk, BiLogoTelegram } from "react-icons/bi";
 import styles from "./Footer.module.scss";
 import googlePlay from "~/shared/assets/images/googleplay.png";
 import {
+  ADMIN_EMAIL,
   GOOGLE_PLAY_APP,
   LINK_TELEGRAM,
   LINK_VK,
@@ -35,9 +36,11 @@ export const Footer: React.FC = () => {
         </div>
       </div>
 
-      <div>
-        <div>Пользовательское соглашение</div>
-        <div>Обратная связь</div>
+      {/* <div>
+          <Link href="">Пользовательское соглашение</Link>
+        </div> */}
+      <div className={styles.internal_links}>
+        <Link href={`mailto:${ADMIN_EMAIL}`}>Обратная связь</Link>
       </div>
 
       <ThemeSwitcher />

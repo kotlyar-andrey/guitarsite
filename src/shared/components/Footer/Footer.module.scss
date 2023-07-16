@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: flex-end;
+  align-items: center;
   flex-wrap: wrap;
   padding: 20px;
   color: var(--text);
@@ -24,6 +24,13 @@
         display: block;
       }
     }
+  }
+
+  & .internal_links a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: var(--primary);
   }
 }
 
