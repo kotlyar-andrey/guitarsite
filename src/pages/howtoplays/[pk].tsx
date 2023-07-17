@@ -52,7 +52,6 @@ const Howtoplay = ({ lesson }: Props) => {
           lessonPk={lesson.pk}
           title={lesson.title}
           video={lesson.video}
-          addition={lesson.additions}
         />
         <SongsContainer songs={lesson.songs} lessonPk={lesson.pk} />
       </MainLayout>
