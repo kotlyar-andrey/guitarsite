@@ -3,9 +3,9 @@ export const REQUESTS_TIMEOUT = 10000; // ms
 export const REQUESTS_BASEURL = "http://guitar0.kotdatacenter.net/api/v1";
 // export const REQUESTS_BASEURL = "http://127.0.0.1:8000/api/v1";
 
-export const SITE_DOMAIN = "http://guitarfrom0.net";
+export const SITE_DOMAIN = "https://guitar0.net";
 
-export const ADMIN_EMAIL = "kotlyar562@gmail.com";
+export const ADMIN_EMAIL = "guitar0.app@gmail.com";
 
 export const GOOGLE_PLAY_APP =
   "https://play.google.com/store/apps/details?id=com.andreykotlyar.guitar0";
